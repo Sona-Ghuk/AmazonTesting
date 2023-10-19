@@ -7,20 +7,22 @@ from pages_.cartPage import CartPage
 driver = webdriver.Chrome()
 driver.get("https://www.amazon.com/")
 
-loginPage = LoginPage(driver)
-loginPage.click_login_link()
-loginPage.fill_username_field("sona.ghukasyan@gmail.com")
-loginPage.click_continue_button()
-loginPage.fill_password_field("hasiko07")
+login_page = LoginPage(driver)
+login_page.click_login_link()
+login_page.fill_username_field("sona.ghukasyan@gmail.com")
+login_page.click_continue_button()
+login_page.fill_password_field("hasiko07")
 time.sleep(5)
-loginPage.click_signin_button()
+login_page.click_signin_button()
 
-navigationBarObj = NavigationBar(driver)
-navigationBarObj.click_to_cart_button()
+driver.get("https://www.amazon.com/gp/product/B077G7KHXC/ref=ox_sc_act_image_1?smid=ATVPDKIKX0DER&psc=1")
 
-cartPageObj = CartPage(driver)
-cartPageObj.delete_firstProduct_from_cart()
+navigation_bar = NavigationBar(driver)
+navigation_bar.click_to_cart_button()
+
+cart_page = CartPage(driver)
+cart_page.first_cart()
 
 time.sleep(5)
 
-driver.quit()
+driver.close()
